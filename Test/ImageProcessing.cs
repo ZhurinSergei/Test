@@ -1,23 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Test
 {
     class ImageProccesing
     {
-        private static ImageProccesing instance;
+        private static ImageProccesing _instance;
 
         public static ImageProccesing GetInstance()
         {
-            if (instance == null)
-                instance = new ImageProccesing();
+            if (_instance == null)
+                _instance = new ImageProccesing();
 
-            return instance;
+            return _instance;
         }
 
         public int[,] Grayscale(byte[,,] original)
@@ -68,8 +63,7 @@ namespace Test
 
         public Coordinate[] AlgorithmBeetle(int[,] g)
         {
-            int cX, cY;           // current
-            bool flag = false;
+            int cX, cY; // current
             List<Coordinate> result = new List<Coordinate>();
 
             Coordinate initialCrd = getInitialCrd(g);      
@@ -77,22 +71,22 @@ namespace Test
 
             cX = initialCrd.x + 1;
             cY = initialCrd.y;
-            Direction Direct = Direction.East;
+            Direction direct = Direction.East;
 
             while ((cX != initialCrd.x) || (cY != initialCrd.y))
             {
-                switch (Direct)
+                switch (direct)
                 {
                     case Direction.North:
                         if (g[cX, cY] == 1)
                         {
                             result.Add(new Coordinate(cX, cY));
-                            Direct = Direction.West;
+                            direct = Direction.West;
                             cX--;
                         }
                         else
                         {
-                            Direct = Direction.East;
+                            direct = Direction.East;
                             cX++;
                         }
                         break;
@@ -101,12 +95,12 @@ namespace Test
                         if (g[cX, cY] == 1)
                         {
                             result.Add(new Coordinate(cX, cY));
-                            Direct = Direction.North;
+                            direct = Direction.North;
                             cY--;
                         }
                         else
                         {
-                            Direct = Direction.South;
+                            direct = Direction.South;
                             cY++;
                         }
                         break;
@@ -115,12 +109,12 @@ namespace Test
                         if (g[cX, cY] == 1)
                         {
                             result.Add(new Coordinate(cX, cY));
-                            Direct = Direction.East;
+                            direct = Direction.East;
                             cX++;
                         }
                         else
                         {
-                            Direct = Direction.West;
+                            direct = Direction.West;
                             cX--;
                         }
 
@@ -130,12 +124,12 @@ namespace Test
                         if (g[cX, cY] == 1)
                         {
                             result.Add(new Coordinate(cX, cY));
-                            Direct = Direction.South;
+                            direct = Direction.South;
                             cY++;
                         }
                         else
                         {
-                            Direct = Direction.North;
+                            direct = Direction.North;
                             cY--;
                         }
                         break;

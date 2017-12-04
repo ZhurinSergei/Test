@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Test
@@ -21,13 +16,13 @@ namespace Test
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ContourSearch.Enabled = false;
+            identify.Enabled = false;
             Point.Image = Image.FromFile("Point.png");
             Point.Width = Point.Image.Width;
             Point.Height = Point.Image.Height;
         }
 
-        private int[,] grayImage;
+        private int[,] _grayImage;
         private void OpenFile_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Image Files(*.bmp;*.jpeg;*.tiff)|*.bmp;*.jpeg;*.tiff";
@@ -52,15 +47,15 @@ namespace Test
                     pixels[x, y, 2] = pixel.B;
                 }
 
-                grayImage = imageProccesing.Grayscale(pixels);
+                _grayImage = imageProccesing.Grayscale(pixels);
 
-                ContourSearch.Enabled = true;
+                identify.Enabled = true;
             }
         }
 
-        private void Identify(object sender, EventArgs e)
+        private void Identify_Click(object sender, EventArgs e)
         {
-            Coordinate[] contourСoordinates = imageProccesing.AlgorithmBeetle(grayImage);
+            Coordinate[] contourСoordinates = imageProccesing.AlgorithmBeetle(_grayImage);
 
             Figure figure = new Figure(contourСoordinates);
             List<Coordinate> controlPoints = figure.SearchControlPoints();

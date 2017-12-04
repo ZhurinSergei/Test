@@ -30,7 +30,7 @@
         {
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.OpenFile = new System.Windows.Forms.Button();
-            this.ContourSearch = new System.Windows.Forms.Button();
+            this.identify = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Point = new System.Windows.Forms.PictureBox();
@@ -52,15 +52,15 @@
             this.OpenFile.UseVisualStyleBackColor = true;
             this.OpenFile.Click += new System.EventHandler(this.OpenFile_Click);
             // 
-            // ContourSearch
+            // identify
             // 
-            this.ContourSearch.Location = new System.Drawing.Point(644, 12);
-            this.ContourSearch.Name = "ContourSearch";
-            this.ContourSearch.Size = new System.Drawing.Size(120, 30);
-            this.ContourSearch.TabIndex = 2;
-            this.ContourSearch.Text = "Identify";
-            this.ContourSearch.UseVisualStyleBackColor = true;
-            this.ContourSearch.Click += new System.EventHandler(this.Identify);
+            this.identify.Location = new System.Drawing.Point(644, 12);
+            this.identify.Name = "identify";
+            this.identify.Size = new System.Drawing.Size(120, 30);
+            this.identify.TabIndex = 2;
+            this.identify.Text = "Identify";
+            this.identify.UseVisualStyleBackColor = true;
+            this.identify.Click += new System.EventHandler(this.Identify_Click);
             // 
             // textBox1
             // 
@@ -96,7 +96,7 @@
             this.Controls.Add(this.Point);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.ContourSearch);
+            this.Controls.Add(this.identify);
             this.Controls.Add(this.OpenFile);
             this.MaximumSize = new System.Drawing.Size(790, 560);
             this.MinimumSize = new System.Drawing.Size(790, 560);
@@ -114,7 +114,7 @@
         #endregion
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button OpenFile;
-        private System.Windows.Forms.Button ContourSearch;
+        private System.Windows.Forms.Button identify;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox Point;
