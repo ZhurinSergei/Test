@@ -1,4 +1,3 @@
-c:\users\сергей\documents\visual studio 2017\Projects\Test\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
 c:\users\сергей\documents\visual studio 2017\Projects\Test\Test\obj\Debug\Test.Properties.Resources.resources
 c:\users\сергей\documents\visual studio 2017\Projects\Test\Test\obj\Debug\Test.csproj.GenerateResource.Cache
 c:\users\сергей\documents\visual studio 2017\Projects\Test\Test\bin\Debug\Test.exe.config

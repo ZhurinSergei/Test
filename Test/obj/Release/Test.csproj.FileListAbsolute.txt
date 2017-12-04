@@ -6,4 +6,3 @@ C:\Users\Сергей\Documents\Visual Studio 2017\Projects\Test\Test\obj\Releas
 C:\Users\Сергей\Documents\Visual Studio 2017\Projects\Test\Test\obj\Release\Test.csproj.GenerateResource.Cache
 C:\Users\Сергей\Documents\Visual Studio 2017\Projects\Test\Test\obj\Release\Test.exe
 C:\Users\Сергей\Documents\Visual Studio 2017\Projects\Test\Test\obj\Release\Test.pdb
-C:\Users\Сергей\documents\visual studio 2017\Projects\test\Test\obj\Release\Test.csprojResolveAssemblyReference.cache
