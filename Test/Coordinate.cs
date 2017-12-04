@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Test
 {
-    class Сoordinate
+    class Coordinate
     {
         public int x;
         public int y;
 
-        public Сoordinate(int x, int y)
+        public Coordinate(int x, int y)
         {
             this.x = x;
             this.y = y;

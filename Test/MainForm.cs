@@ -12,6 +12,8 @@ namespace Test
 {
     public partial class MainForm : Form
     {
+        private ImageProccesing imageProccesing = ImageProccesing.GetInstance();
+
         public MainForm()
         {
             InitializeComponent();
@@ -25,8 +27,7 @@ namespace Test
             Point.Height = Point.Image.Height;
         }
 
-        private double[,] grayImage;
-
+        private int[,] grayImage;
         private void OpenFile_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Image Files(*.bmp;*.jpeg;*.tiff)|*.bmp;*.jpeg;*.tiff";
@@ -51,7 +52,7 @@ namespace Test
                     pixels[x, y, 2] = pixel.B;
                 }
 
-                grayImage = ImageProccesing.Grayscale(pixels);
+                grayImage = imageProccesing.Grayscale(pixels);
 
                 ContourSearch.Enabled = true;
             }
@@ -59,13 +60,13 @@ namespace Test
 
         private void Identify(object sender, EventArgs e)
         {
-            Сoordinate[] contourСoordinates = ImageProccesing.AlgorithmBeetle(grayImage);
+            Coordinate[] contourСoordinates = imageProccesing.AlgorithmBeetle(grayImage);
 
             Figure figure = new Figure(contourСoordinates);
-            List<Сoordinate> controlPoints = figure.SearchControlPoints();
+            List<Coordinate> controlPoints = figure.SearchControlPoints();
 
             string str;
-            if (controlPoints.Count == 1)      str = "The picture shows a circle"   + Environment.NewLine;
+            if      (controlPoints.Count == 1) str = "The picture shows a circle"   + Environment.NewLine;
             else if (controlPoints.Count == 4) str = "The picture shows a triangle" + Environment.NewLine;
             else if (controlPoints.Count == 5) str = "The picture shows a square"   + Environment.NewLine;
             else                               str = "The figure is not defined"    + Environment.NewLine;
@@ -96,7 +97,7 @@ namespace Test
             //pictureBox1.Image.Save("Image.bmp");
         }
 
-        private void PrintText(List<Сoordinate> crds)
+        private void PrintText(List<Coordinate> crds)
         {
             using (Graphics g = Graphics.FromImage(pictureBox1.Image))
             {
@@ -110,7 +111,7 @@ namespace Test
             }
         }
 
-        private void PrintPoint(List<Сoordinate> crds)
+        private void PrintPoint(List<Coordinate> crds)
         {
             using (Graphics g = Graphics.FromImage(pictureBox1.Image))
             {

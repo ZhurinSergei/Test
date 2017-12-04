@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,9 +10,19 @@ namespace Test
 {
     class ImageProccesing
     {
-        public static double[,] Grayscale(byte[,,] original)
+        private static ImageProccesing instance;
+
+        public static ImageProccesing GetInstance()
         {
-            double[,] grayscale = new double[original.GetLength(0) + 2, original.GetLength(1) + 2];
+            if (instance == null)
+                instance = new ImageProccesing();
+
+            return instance;
+        }
+
+        public int[,] Grayscale(byte[,,] original)
+        {
+            int[,] grayscale = new int[original.GetLength(0) + 2, original.GetLength(1) + 2];
 
             for (int x = 1; x < original.GetLength(0) - 1; x++)
             {
@@ -26,7 +37,7 @@ namespace Test
             return grayscale;
         }
 
-        public static double[,] SobelFiltering(double[,] array)
+        public double[,] SobelFiltering(double[,] array)
         {
             var width = array.GetLength(0);
             var height = array.GetLength(1);
@@ -55,41 +66,27 @@ namespace Test
             West
         }
 
-        public static Сoordinate[] AlgorithmBeetle(double[,] g)
+        public Coordinate[] AlgorithmBeetle(int[,] g)
         {
-            int cX, cY; // current
-            int iX = 0, iY = 0; // initialS
+            int cX, cY;           // current
             bool flag = false;
-            List<Сoordinate> result = new List<Сoordinate>();
+            List<Coordinate> result = new List<Coordinate>();
 
-            for (int x = 0; x < g.GetLength(0); x++)
-            {
-                for (int y = 0; y < g.GetLength(1); y++)
-                {
-                    if (g[x, y] == 1)
-                    {
-                        iX = x;
-                        iY = y;
-                        flag = true;
-                        break;
-                    }
-                }
-                if (flag) break;
-            }
-            result.Add(new Сoordinate(iX, iY));
+            Coordinate initialCrd = getInitialCrd(g);      
+            result.Add(initialCrd);
 
-            cX = iX + 1;
-            cY = iY;
+            cX = initialCrd.x + 1;
+            cY = initialCrd.y;
             Direction Direct = Direction.East;
 
-            while ((cX != iX) || (cY != iY))
+            while ((cX != initialCrd.x) || (cY != initialCrd.y))
             {
                 switch (Direct)
                 {
                     case Direction.North:
                         if (g[cX, cY] == 1)
                         {
-                            result.Add(new Сoordinate(cX, cY));
+                            result.Add(new Coordinate(cX, cY));
                             Direct = Direction.West;
                             cX--;
                         }
@@ -103,7 +100,7 @@ namespace Test
                     case Direction.East:
                         if (g[cX, cY] == 1)
                         {
-                            result.Add(new Сoordinate(cX, cY));
+                            result.Add(new Coordinate(cX, cY));
                             Direct = Direction.North;
                             cY--;
                         }
@@ -117,7 +114,7 @@ namespace Test
                     case Direction.South:
                         if (g[cX, cY] == 1)
                         {
-                            result.Add(new Сoordinate(cX, cY));
+                            result.Add(new Coordinate(cX, cY));
                             Direct = Direction.East;
                             cX++;
                         }
@@ -132,7 +129,7 @@ namespace Test
                     case Direction.West:
                         if (g[cX, cY] == 1)
                         {
-                            result.Add(new Сoordinate(cX, cY));
+                            result.Add(new Coordinate(cX, cY));
                             Direct = Direction.South;
                             cY++;
                         }
@@ -146,6 +143,21 @@ namespace Test
             }
 
             return result.ToArray();
+        }
+
+        private Coordinate getInitialCrd(int[,] array)
+        {
+            for (int x = 0; x< array.GetLength(0); x++)
+            {
+                for (int y = 0; y< array.GetLength(1); y++)
+                {
+                    if (array[x, y] == 1)
+                    {
+                        return new Coordinate(x, y);
+                    }
+                }
+            }
+            return new Coordinate(0, 0);
         }
     }
 }

@@ -6,45 +6,43 @@ namespace Test
 {
     class Figure
     {
-        private Сoordinate[] contourСoordinates;
-        private Сoordinate centre;
+        private Coordinate[] contourСoordinates;
+        private Coordinate centre;
 
         private double[] histogram;
-        private List<Сoordinate> controlPoints = new List<Сoordinate>();
+        private List<Coordinate> controlPoints = new List<Coordinate>();
 
-        public Figure(Сoordinate[] contourСoordinates)
+        public Figure(Coordinate[] contourСoordinates)
         {
             this.contourСoordinates = contourСoordinates;
-            centre = SearchСenter();
 
+            centre = SearchСenter();
             histogram = new double[contourСoordinates.Length];
             histogram = GetHistogram();
         }
 
-        public List<Сoordinate> SearchControlPoints()
+        public List<Coordinate> SearchControlPoints()
         {
-            bool flag = false;
-            double max = histogram.Max();
-
             List<double> listHgrm = histogram.ToList();
             listHgrm.AddRange(histogram.ToList().GetRange(0, histogram.ToList().IndexOf(histogram.Min())));
             listHgrm.RemoveRange(0, histogram.ToList().IndexOf(histogram.Min()));
 
-            List<Сoordinate> listCrd = contourСoordinates.ToList();
+            List<Coordinate> listCrd = contourСoordinates.ToList();
             listCrd.AddRange(contourСoordinates.ToList().GetRange(0, histogram.ToList().IndexOf(histogram.Min())));
             listCrd.RemoveRange(0, histogram.ToList().IndexOf(histogram.Min()));
 
             int count = 0;
+            bool flag = false;
             for (int i = 0; i < histogram.Length; i++)
             {
-                if (listHgrm[i] > max * 0.93)
+                if (listHgrm[i] > histogram.Max() * 0.93)
                 {
-                    flag = true;
                     count++;
+                    flag = true;
                 }
                 else if (flag)
                 {
-                    controlPoints.Add(new Сoordinate(listCrd[i - count / 2].x, listCrd[i - count / 2].y));
+                    controlPoints.Add(new Coordinate(listCrd[i - count / 2].x, listCrd[i - count / 2].y));
 
                     count = 0;
                     flag = false;
@@ -52,7 +50,7 @@ namespace Test
             }
 
             if (controlPoints.Count > 4) controlPoints.RemoveAll(x => true);
-            controlPoints.Add(new Сoordinate(centre.x, centre.y));
+            controlPoints.Add(new Coordinate(centre.x, centre.y));
 
             return controlPoints;
         }
@@ -70,7 +68,7 @@ namespace Test
             return result;
         }
 
-        public double DistanceBetweenPoints(Сoordinate c1, Сoordinate c2)
+        public double DistanceBetweenPoints(Coordinate c1, Coordinate c2)
         {
             return Math.Sqrt(Math.Pow(c1.x - c2.x, 2) + Math.Pow(c1.y - c2.y, 2));
         }
@@ -83,9 +81,9 @@ namespace Test
             }
         }
 
-        private Сoordinate SearchСenter()
+        private Coordinate SearchСenter()
         {
-            Сoordinate centre = new Сoordinate(0, 0);
+            Coordinate centre = new Coordinate(0, 0);
             for (int i = 0; i < contourСoordinates.Length; i++)
             {
                 centre.x += contourСoordinates[i].x;

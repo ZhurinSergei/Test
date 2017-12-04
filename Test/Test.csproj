@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Сoordinate.cs" />
+    <Compile Include="Coordinate.cs" />
     <Compile Include="Figure.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
