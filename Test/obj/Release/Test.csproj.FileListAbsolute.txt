@@ -1,0 +1,9 @@
+C:\Users\Сергей\Documents\Visual Studio 2017\Projects\Test\Test\bin\Release\Test.exe.config
+C:\Users\Сергей\Documents\Visual Studio 2017\Projects\Test\Test\bin\Release\Test.exe
+C:\Users\Сергей\Documents\Visual Studio 2017\Projects\Test\Test\bin\Release\Test.pdb
+C:\Users\Сергей\Documents\Visual Studio 2017\Projects\Test\Test\obj\Release\Test.MainForm.resources
+C:\Users\Сергей\Documents\Visual Studio 2017\Projects\Test\Test\obj\Release\Test.Properties.Resources.resources
+C:\Users\Сергей\Documents\Visual Studio 2017\Projects\Test\Test\obj\Release\Test.csproj.GenerateResource.Cache
+C:\Users\Сергей\Documents\Visual Studio 2017\Projects\Test\Test\obj\Release\Test.exe
+C:\Users\Сергей\Documents\Visual Studio 2017\Projects\Test\Test\obj\Release\Test.pdb
+C:\Users\Сергей\documents\visual studio 2017\Projects\test\Test\obj\Release\Test.csprojResolveAssemblyReference.cache

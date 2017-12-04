@@ -24,8 +24,6 @@ namespace Test
         public List<Сoordinate> SearchControlPoints()
         {
             bool flag = false;
-            int numAngles = 0;
-
             double max = histogram.Max();
 
             List<double> listHgrm = histogram.ToList();
@@ -47,7 +45,6 @@ namespace Test
                 else if (flag)
                 {
                     controlPoints.Add(new Сoordinate(listCrd[i - count / 2].x, listCrd[i - count / 2].y));
-                    numAngles++;
 
                     count = 0;
                     flag = false;

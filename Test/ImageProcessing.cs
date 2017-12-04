@@ -47,7 +47,7 @@ namespace Test
             return result;
         }
 
-        enum Direction : int
+        enum Direction
         {
             North,
             East,

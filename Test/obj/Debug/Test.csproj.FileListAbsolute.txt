@@ -7,3 +7,5 @@ c:\users\сергей\documents\visual studio 2017\Projects\Test\Test\bin\Debug\
 c:\users\сергей\documents\visual studio 2017\Projects\Test\Test\obj\Debug\Test.exe
 c:\users\сергей\documents\visual studio 2017\Projects\Test\Test\obj\Debug\Test.pdb
 c:\users\сергей\documents\visual studio 2017\Projects\Test\Test\obj\Debug\Test.MainForm.resources
+C:\Users\Сергей\Documents\Visual Studio 2017\Projects\Test\Test\bin\Debug\Test.exe.CodeAnalysisLog.xml
+C:\Users\Сергей\Documents\Visual Studio 2017\Projects\Test\Test\bin\Debug\Test.exe.lastcodeanalysissucceeded
